@@ -89,3 +89,21 @@ kubectl apply -f ./backend/api/api-deployment.kubernates.yaml
 kubectl apply -f ./backend/api/db-service.kubernates.yaml
 kubectl apply -f ./backend/api/api-service.kubernates.yaml
 ```
+
+If above won't work, try the following:
+
+```bash
+cd ./backend/api
+kubectl create deployment todo-api --image sswietoniowski/todo-api:version1.0
+kubectl get deployments
+kubectl describe deployments/todo-api
+kubectl get pods
+kubectl expose deployment/todo-api --type=LoadBalancer --port 5000
+kubectl get services
+kubectl describe services/todo-api
+kubectl delete service -l app=todo-api
+kubectl delete deployment -l app=todo-api
+kubectl get deployments
+kubectl get pods
+kubectl get services
+```
