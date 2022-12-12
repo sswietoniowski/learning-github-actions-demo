@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: db
+    restart: on-failure
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Password123!"
+    volumes:
+      - sqlvolume:/var/opt/mssql
+    ports:
+      - "2433:1433"
+    networks:
+      - todoapp
+  api:
+    container_name: api
+    image: sswietoniowski/todo-api:latest
+    build:
+      context: .
+      dockerfile: ./api-mssql.dockerfile
+    environment:
+      DatabaseEngine: "Mssql"
+      "ConnectionStrings:MssqlConnection": "Server=db,1433;Database=todos;User=sa;Password=Password123!;TrustServerCertificate=true"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    networks:
+      - todoapp
+networks:
+  todoapp:
+    driver: bridge
+volumes:
+  sqlvolume:
