@@ -90,6 +90,12 @@ kubectl apply -f ./backend/api/db-service.kubernates.yaml
 kubectl apply -f ./backend/api/api-service.kubernates.yaml
 ```
 
+We can scale the API deployment to 3 replicas:
+
+```bash
+kubectl scale deployment todo-api --replicas=3
+```
+
 If above won't work, try the following:
 
 ```bash
