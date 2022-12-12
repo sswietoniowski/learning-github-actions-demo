@@ -18,5 +18,5 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENV DatabaseEngine=Mssql
-ENV ConnectionStrings:MssqlConnection="Server=mssql,1433;Database=todos;User=sa;Password=Password123!"
+ENV ConnectionStrings:MssqlConnection="Server=mssql,1433;Database=todos;User=sa;Password=Password123!;TrustServerCertificate=true"
 ENTRYPOINT ["dotnet", "api.dll"]

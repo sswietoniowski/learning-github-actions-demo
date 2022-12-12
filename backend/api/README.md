@@ -46,7 +46,7 @@ To test connection to the MSSQL server from the app, run the following command:
 ```bash
 docker run --network todo-app -it --rm mcr.microsoft.com/mssql-tools sqlcmd -S mssql -U SA -P Password123!
 $Env:DatabaseEngine = "Mssql"
-$Env:ConnectionStrings:MssqlConnection = "Server=localhost,2433;Database=todos;User=sa;Password=Password123!"
+$Env:ConnectionStrings:MssqlConnection = "Server=localhost,2433;Database=todos;User=sa;Password=Password123!;TrustServerCertificate=true"
 cd .\backend\api
 dotnet run
 ```
