@@ -41,7 +41,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// TODO: add support for https
+// app.UseHttpsRedirection();
 
 app.MapGet("/api/todos", async (ITodoService todoService) =>
 {
@@ -49,13 +50,26 @@ app.MapGet("/api/todos", async (ITodoService todoService) =>
 
     return Results.Ok(todos);
 })
-.WithName("GetTodos")
-.Produces<IEnumerable<TodoDto>>(StatusCodes.Status200OK);
+    .WithName("GetTodos")
+    .Produces<IEnumerable<TodoDto>>(StatusCodes.Status200OK);
+
+// TODO: enable to show how easy is to change Docker image
+app.MapPost("/api/todos", async (ITodoService todoService, TodoForCreationDto todoDto) =>
+{
+    var todo = await todoService.CreateTodoAsync(todoDto);
+
+    return Results.Created($"/api/todos/{todo.Id}", todo);
+})
+    .WithName("CreateTodo")
+    .Produces<TodoDto>(StatusCodes.Status201Created)
+    .ProducesValidationProblem() // Validation errors, not yet implemented
+    .ProducesProblem(StatusCodes.Status500InternalServerError);
 
 var context = (app as IApplicationBuilder)
-    .ApplicationServices
+    ?.ApplicationServices
     .CreateScope().ServiceProvider
-    .GetRequiredService<BaseTodoContext>();
+    .GetRequiredService<BaseTodoContext>() 
+    ?? throw new InvalidOperationException("Invalid application builder");
 
 if ((await context.Database.GetPendingMigrationsAsync()).Any())
 {
