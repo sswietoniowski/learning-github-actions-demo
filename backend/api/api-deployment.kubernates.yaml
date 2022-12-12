@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-deployment
+  name: todo-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: api
+      app: todo-api
   template:
     metadata:
       labels:
-        app: api
+        app: todo-api
     spec:
       containers:
         - name: api
@@ -21,4 +21,4 @@ spec:
             - name: DatabaseEngine
               value: "Mssql"
             - name: "ConnectionStrings__MssqlConnection"
-              value: "Server=db-service,1433;Database=todos;User=sa;Password=Password123!;TrustServerCertificate=true"
+              value: "Server=todo-db,2433;Database=todos;User=sa;Password=Password123!;TrustServerCertificate=true"
