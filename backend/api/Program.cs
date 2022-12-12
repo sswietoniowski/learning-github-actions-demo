@@ -1,3 +1,4 @@
+using Polly;
 using backend.api;
 
 using Microsoft.EntityFrameworkCore;
@@ -65,15 +66,24 @@ app.MapGet("/api/todos", async (ITodoService todoService) =>
 //     .ProducesValidationProblem() // Validation errors, not yet implemented
 //     .ProducesProblem(StatusCodes.Status500InternalServerError);
 
-var context = (app as IApplicationBuilder)
-    ?.ApplicationServices
-    .CreateScope().ServiceProvider
-    .GetRequiredService<BaseTodoContext>() 
-    ?? throw new InvalidOperationException("Invalid application builder");
+const int MAX_RETRIES = 7;
+const int RETRY_DELAY_IN_SECONDS = 15;
+var retryPolicy = Policy.Handle<Exception>()
+	.WaitAndRetryAsync(retryCount: MAX_RETRIES, 
+        sleepDurationProvider: (attemptCount) => TimeSpan.FromSeconds(RETRY_DELAY_IN_SECONDS));
 
-if ((await context.Database.GetPendingMigrationsAsync()).Any())
+await retryPolicy.ExecuteAsync(async () =>
 {
-    await context.Database.MigrateAsync();
-}
+    var context = (app as IApplicationBuilder)
+        ?.ApplicationServices
+        .CreateScope().ServiceProvider
+        .GetRequiredService<BaseTodoContext>() 
+        ?? throw new InvalidOperationException("Invalid application builder");
+
+    if ((await context.Database.GetPendingMigrationsAsync()).Any())
+    {
+        await context.Database.MigrateAsync();
+    }
+});
 
 app.Run();
