@@ -54,16 +54,16 @@ app.MapGet("/api/todos", async (ITodoService todoService) =>
     .Produces<IEnumerable<TodoDto>>(StatusCodes.Status200OK);
 
 // TODO: enable to show how easy is to change Docker image
-app.MapPost("/api/todos", async (ITodoService todoService, TodoForCreationDto todoDto) =>
-{
-    var todo = await todoService.CreateTodoAsync(todoDto);
+// app.MapPost("/api/todos", async (ITodoService todoService, TodoForCreationDto todoDto) =>
+// {
+//     var todo = await todoService.CreateTodoAsync(todoDto);
 
-    return Results.Created($"/api/todos/{todo.Id}", todo);
-})
-    .WithName("CreateTodo")
-    .Produces<TodoDto>(StatusCodes.Status201Created)
-    .ProducesValidationProblem() // Validation errors, not yet implemented
-    .ProducesProblem(StatusCodes.Status500InternalServerError);
+//     return Results.Created($"/api/todos/{todo.Id}", todo);
+// })
+//     .WithName("CreateTodo")
+//     .Produces<TodoDto>(StatusCodes.Status201Created)
+//     .ProducesValidationProblem() // Validation errors, not yet implemented
+//     .ProducesProblem(StatusCodes.Status500InternalServerError);
 
 var context = (app as IApplicationBuilder)
     ?.ApplicationServices
