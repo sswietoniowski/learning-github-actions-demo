@@ -2,12 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: todo-db
+  labels:
+    app: todo-db
 spec:
   ports:
-    - name: todo-db
-      port: 2433
+    - port: 2433
       protocol: TCP
       targetPort: 2433
   selector:
-    name: todo-db
+    app: todo-db
   type: LoadBalancer
