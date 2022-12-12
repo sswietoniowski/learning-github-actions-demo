@@ -1,6 +1,8 @@
-# Sample Todo API
+# Learning Docker & Kubernates Demo
 
 This is a sample Todo API that uses the ASP.NET Core Web API template.
+
+Small example showing use of Docker & Kubernates. This sample was created for my own use during lectures, so nothing fancy here :-).
 
 ## Building the API Docker image
 
