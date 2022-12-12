@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: sswietoniowski/todo-api:version3.0
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DatabaseEngine
+              value: "Mssql"
+            - name: "ConnectionStrings__MssqlConnection"
+              value: "Server=db-service,1433;Database=todos;User=sa;Password=Password123!;TrustServerCertificate=true"

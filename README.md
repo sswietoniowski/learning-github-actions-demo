@@ -38,7 +38,7 @@ In case of the MSSQL version, you need to run the MSSQL container first:
 ```bash
 docker network create todo-app
 docker volume create sqlvolume
-docker run --network todo-app --network-alias mssql -p 2433:1433 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Password123!' -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2019-latest
+docker run --network todo-app --network-alias mssql -p 2433:1433 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Password123!' -e 'MSSQL_PID=Developer' -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2019-latest
 ```
 
 To test connection to the MSSQL server from the app, run the following command:
@@ -77,4 +77,15 @@ To run the API with Docker Compose, use the following command from the root of t
 
 ```bash
 docker-compose -f ./backend/api/docker-compose.yaml up -d
+```
+
+## Running the API in Kubernetes
+
+To run the API in Kubernetes, use the following command from the root of the repository:
+
+```bash
+kubectl apply -f ./backend/api/db-deployment.kubernates.yaml
+kubectl apply -f ./backend/api/api-deployment.kubernates.yaml
+kubectl apply -f ./backend/api/db-service.kubernates.yaml
+kubectl apply -f ./backend/api/api-service.kubernates.yaml
 ```
