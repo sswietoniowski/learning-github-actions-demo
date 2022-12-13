@@ -85,12 +85,12 @@ To run the API in Kubernetes, use the following command from the root of the rep
 
 ```bash
 kubectl apply -f ./backend/api/db-deployment.kubernates.yaml
-kubectl apply -f ./backend/api/api-deployment.kubernates.yaml
 kubectl apply -f ./backend/api/db-service.kubernates.yaml
+kubectl apply -f ./backend/api/api-deployment.kubernates.yaml
 kubectl apply -f ./backend/api/api-service.kubernates.yaml
 ```
 
-We can scale the API deployment to 3 replicas:
+We can then show how easy it is to scale the API deployment to 3 replicas:
 
 ```bash
 kubectl scale deployment todo-api --replicas=3
