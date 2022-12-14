@@ -113,3 +113,5 @@ kubectl get deployments
 kubectl get pods
 kubectl get services
 ```
+
+You can try out do the same on a remote machine for free using [this](https://labs.play-with-k8s.com/) service :-).
