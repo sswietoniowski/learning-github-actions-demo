@@ -1,4 +1,4 @@
-name: Publish Docker Image (SQLite with Volumes)
+name: Publish Docker Image (SQLite without Volumes)
 
 on:
   release:
@@ -32,6 +32,6 @@ jobs:
         with:
           context: "{{defaultContext}}:/backend/api"
           push: true
-          file: api-sqlite-with-volumes.dockerfile
+          file: api-sqlite.dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
