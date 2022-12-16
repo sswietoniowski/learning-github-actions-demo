@@ -1,6 +1,7 @@
 name: Publish Docker Image (SQLite with Volumes)
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
