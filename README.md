@@ -11,6 +11,7 @@ You might find these resources useful while playing with GitHub Actions:
 - [Understanding GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions),
 - [Building and testing .NET](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net),
 - [Building and testing Node.js](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs),
+- [Publishing Docker images](https://docs.github.com/en/actions/publishing-packages/publishing-docker-images),
 - [GitHub Actions and .NET](https://learn.microsoft.com/en-us/dotnet/devops/github-actions-overview),
 - [Adding a workflow status badge](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge),
 - [Quickstart: Create a build validation GitHub workflow](https://learn.microsoft.com/en-us/dotnet/devops/dotnet-build-github-action),
