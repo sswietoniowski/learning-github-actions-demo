@@ -1,3 +1,5 @@
+[![Run tests on Pull Request](https://github.com/sswietoniowski/learning-github-actions-demo/actions/workflows/run-tests-on-pullrequest.yaml/badge.svg?branch=master&event=push)](https://github.com/sswietoniowski/learning-github-actions-demo/actions/workflows/run-tests-on-pullrequest.yaml)
+
 # Learning GitHub Actions Demo
 
 Small example showing how and for what we can use GitHub Actions. This sample was created for my own use during lectures, so nothing fancy here :-).
