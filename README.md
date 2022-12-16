@@ -1,4 +1,4 @@
-[![Run tests on Pull Request](https://github.com/sswietoniowski/learning-github-actions-demo/actions/workflows/run-tests-on-pullrequest.yaml/badge.svg?branch=master)](https://github.com/sswietoniowski/learning-github-actions-demo/actions/workflows/run-tests-on-pullrequest.yaml)
+[![Run tests](https://github.com/sswietoniowski/learning-github-actions-demo/actions/workflows/run-tests.yaml/badge.svg?branch=master)](https://github.com/sswietoniowski/learning-github-actions-demo/actions/workflows/run-tests.yaml)
 
 # Learning GitHub Actions Demo
 
