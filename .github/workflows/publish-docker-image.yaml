@@ -30,8 +30,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./backend/api
+          context: "{{defaultContext}}:/backend/api"
           push: true
-          file: ./api-sqlite-with-volumes.dockerfile
+          file: api-sqlite-with-volumes.dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
