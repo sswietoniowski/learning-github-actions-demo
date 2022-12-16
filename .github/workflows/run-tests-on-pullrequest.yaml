@@ -25,14 +25,11 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
         
-    - name: Change directory
-      run: cd ./backend/api
-
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore ./backend/api/api.csproj
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build ./backend/api/api.csproj --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test ./backend/api/api.csproj --no-restore --verbosity normal
