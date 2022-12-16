@@ -9,8 +9,8 @@ jobs:
     name: Push Docker Image to Docker Hub
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
@@ -29,6 +29,6 @@ jobs:
         with:
           context: ./backend/api
           push: true
-          file: api-sqlite-with-volumes.dockerfile
+          file: ./api-sqlite-with-volumes.dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
