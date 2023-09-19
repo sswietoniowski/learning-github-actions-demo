@@ -20,4 +20,6 @@ You might find these resources useful while playing with GitHub Actions:
 - [Quickstart: Create a build validation GitHub workflow](https://learn.microsoft.com/en-us/dotnet/devops/dotnet-build-github-action),
 - [Quickstart: Create a test validation GitHub workflow](https://learn.microsoft.com/en-us/dotnet/devops/dotnet-test-github-action),
 - [Quickstart: Create a GitHub workflow to publish an app](https://learn.microsoft.com/en-us/dotnet/devops/dotnet-publish-github-action),
-- [Quickstart: Create a security scan GitHub workflow](https://learn.microsoft.com/en-us/dotnet/devops/dotnet-secure-github-action).
+- [Quickstart: Create a security scan GitHub workflow](https://learn.microsoft.com/en-us/dotnet/devops/dotnet-secure-github-action),
+- [Coding Short: Test Your Github Actions Locally with Act](https://youtu.be/7xfDpoEBp60?si=LCQAiG2qc33AoIDo),
+- [Act](https://github.com/nektos/act) - run your GitHub Actions locally.
